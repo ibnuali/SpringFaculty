@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faculty List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="@{http://localhost:8080/css/boostrap.min.css}" th:href="@{http://localhost:8080/css/bootstrap.min.css}" />
+ 
+</head>
+<body>
+
+<a href="/" class="btn btn-primary">Home</a> 
+ <p></p>
+<p align = 'center'><a href="/faculty/addFaculty" class="btn btn-primary">Add Faculty</a></p>
+	<h1>Faculties</h1>
+    <table class="table table-striped">
+		<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th>Established Date</th>
+		    <th>Actions</th>
+		</tr>  
+    	<tr th:each = "faculty : ${faculties}">
+    		<td th:text="${faculty.facultyid}"></td>
+    		<td th:text="${faculty.name}"></td>
+    		<td th:text="${#dates.format(faculty.established_date, 'dd-MMM-yyyy')}"></td>
+    		<td> <a th:href="@{/faculty/editFaculty/{id}(id=${faculty.facultyid})}" class="btn btn-success">Edit</a> <a th:href="@{/faculty/deleteFaculty/{id}(id=${faculty.facultyid})}" class="btn btn-danger">Delete</a></td>
+    	</tr>
+    </table>
+    
+    
+</body>
+</html>

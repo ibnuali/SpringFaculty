@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="@{http://localhost:8080/css/boostrap.min.css}" th:href="@{http://localhost:8080/css/bootstrap.min.css}" />
+ 
+</head>
+<body>
+
+	<h1>Edit staff</h1>
+	<div>
+		<form th:object="${staff}" th:action="@{../updateStaff}" action="#" method="post">
+		    <input type="hidden" th:field="*{staffid}"/>
+			<input type="text" th:field="*{name}" class="form-control"
+				placeholder="Faculty Name" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="*{address}" class="form-control"
+				placeholder="Address" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="*{position}" class="form-control"
+				placeholder="Position" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="*{faculty.facultyid}" class="form-control"
+				placeholder="Faculty ID" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" class="btn btn-success" value="Update"></input>
+		</form>
+	</div>
+</body>
+</html>

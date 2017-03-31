@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="@{http://localhost:8080/css/boostrap.min.css}" th:href="@{http://localhost:8080/css/bootstrap.min.css}" />
+ 
+</head>
+<body>
+
+ <a href="/" class="btn btn-primary">Home</a>
+ <p></p>
+ <p align = 'center'>
+ <a href="/staff/addStaff" class="btn btn-primary">Add Staff</a>
+ </p>
+	<h1>Staffs</h1>
+    <table class="table table-striped">
+		<tr>
+		    <th>Id</th>
+		    <th>Name</th>
+		    <th>Established Date</th>
+		    <th>Position</th>
+		    <th>Faculty Name</th>
+		    <th>Actions</th>
+		</tr>  
+    	<tr th:each = "staff : ${staffs}">
+    		<td th:text="${staff.staffid}"></td>
+    		<td th:text="${staff.name}"></td>
+    		<td th:text="${staff.address}"></td>
+    		<td th:text="${staff.position}"></td>
+    		<td th:text="${staff.faculty.name}"></td>
+    		<td> <a th:href="@{/staff/editStaff/{id}(id=${staff.staffid})}" class="btn btn-success">Edit</a> <a th:href="@{/staff/deleteStaff/{id}(id=${staff.staffid})}" class="btn btn-danger">Delete</a></td>
+    	</tr>
+    </table>
+    
+    
+</body>
+</html>
