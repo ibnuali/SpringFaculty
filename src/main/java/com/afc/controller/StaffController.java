@@ -56,6 +56,8 @@ public class StaffController {
     public String editStaff(@PathVariable("id") Long staffid, Model model) {
     	Staff staff = repository.findOne(staffid);
     	model.addAttribute("staff", staff);
+    	List<Faculty> faculties = (List<Faculty>) frepository.findAll();
+    	model.addAttribute("faculties", faculties);
         return "editStaff";
     }
 	

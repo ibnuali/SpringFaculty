@@ -21,8 +21,10 @@
 			<input type="text" th:field="*{position}" class="form-control"
 				placeholder="Position" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="text" th:field="*{faculty.facultyid}" class="form-control"
-				placeholder="Faculty ID" />
+			<select id="faculty" name ="faculty" class="form-control"> 
+				<option th:each="faculty : ${faculties}" th:value="${faculty.facultyid}" th:text="${faculty.name}"></option>
+			</select>
+			
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" class="btn btn-success" value="Update"></input>
 		</form>
