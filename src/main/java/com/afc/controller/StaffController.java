@@ -65,7 +65,7 @@ public class StaffController {
     	return "redirect:/staff/";
     }
     
-    @RequestMapping(value = "/staff/deleteStaff/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "deleteStaff/{id}", method = RequestMethod.GET)
     public String deleteStaff(@PathVariable("id") Long staffid, Model model) {
     	repository.delete(staffid);
         return "redirect:/staff/";
