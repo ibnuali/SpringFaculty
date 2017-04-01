@@ -18,6 +18,7 @@ import com.afc.repo.FacultyRepository;
 import com.afc.repo.StaffRepository;
 
 @Controller
+@RequestMapping("/staff")
 public class StaffController {
 	@Autowired
     private StaffRepository repository; 
@@ -25,7 +26,7 @@ public class StaffController {
 	@Autowired
     private FacultyRepository frepository; 
 	
-	@RequestMapping("/staff/show")
+	@RequestMapping("")
 	public String faculty(Model model) {
 		 List<Staff> staff = (List<Staff>) repository.findAll();
 		
@@ -34,7 +35,7 @@ public class StaffController {
     	return "staff";
     }
 
-    @RequestMapping(value = "staff/addStaff")
+    @RequestMapping(value = "addStaff")
     public String addFaculty(Model model){
 	    	model.addAttribute("staff", new Staff());
 	    	List<Faculty> faculties = (List<Faculty>) frepository.findAll();
@@ -43,30 +44,30 @@ public class StaffController {
     }
     
     
-    @RequestMapping(value = "staff/updateStaff", method = RequestMethod.POST)
+    @RequestMapping(value = "updateStaff", method = RequestMethod.POST)
     public String updateFaculty( @Valid Staff staff, BindingResult bindingResult, Model model){
     	
         repository.save(staff);
        
-    	return "redirect:/staff/show";
+    	return "redirect:/staff/";
     }
     
-    @RequestMapping(value = "staff/editStaff/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "editStaff/{id}", method = RequestMethod.GET)
     public String editStaff(@PathVariable("id") Long staffid, Model model) {
     	Staff staff = repository.findOne(staffid);
     	model.addAttribute("staff", staff);
         return "editStaff";
     }
 	
-    @RequestMapping(value = "/staff/saveStaff", method = RequestMethod.POST)
+    @RequestMapping(value = "saveStaff", method = RequestMethod.POST)
     public String saveFaculty( @Valid Staff staff, BindingResult bindingResult, Model model){
         repository.save(staff);
-    	return "redirect:/staff/show";
+    	return "redirect:/staff/";
     }
     
     @RequestMapping(value = "/staff/deleteStaff/{id}", method = RequestMethod.GET)
     public String deleteStaff(@PathVariable("id") Long staffid, Model model) {
     	repository.delete(staffid);
-        return "redirect:/staff/show";
+        return "redirect:/staff/";
     } 
 }
